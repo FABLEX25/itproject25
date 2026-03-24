@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Контакты — Портфолио</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="contacts.css" />
+  
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__wrap">
+      <a href="index.html" class="logo">Портфолио</a>
+
+      <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="index2.html">О себе</a>
+        <a href="index4.html">Портфолио</a>
+        <a href="index3.html" class="active">Контакты</a>
+      </nav>
+
+      <a href="tel:+78121112233" class="header__phone">8 (812) 111-22-33</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="contacts-page">
+      <div class="container">
+        <div class="contacts-top">
+          <h1 class="page-title">Контакты</h1>
+          <p class="page-subtitle">Свяжитесь со мной для обсуждения проекта</p>
+          <div class="title-line"></div>
+        </div>
+
+        <div class="contacts-grid">
+          <div class="contacts-info">
+            <h2 class="contacts-info__title">Контактная информация</h2>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <div class="contact-item__icon">✉</div>
+                <div class="contact-item__content">
+                  <h3>Email</h3>
+                  <a href="mailto:contact@example.com">sergeevkirill66625@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-item__icon">☎</div>
+                <div class="contact-item__content">
+                  <h3>Телефон</h3>
+                  <a href="tel:+79001234567">+7 (900) 123-45-67</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-item__icon">⚐</div>
+                <div class="contact-item__content">
+                  <h3>Местоположение</h3>
+                  <p>Санкт-Петербург, Россия</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="work-card">
+              <h3 class="work-card__title">Время работы</h3>
+              <p>Понедельник - Пятница: 9:00 - 18:00</p>
+              <p>Суббота - Воскресенье: Выходной</p>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h2 class="form-card__title">Отправить сообщение</h2>
+
+            <form class="contact-form">
+              <div class="form-group">
+                <label for="name">Ваше имя</label>
+                <input type="text" id="name" name="name" placeholder="Иван Иванов">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="ivan@example.com">
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Тема</label>
+                <input type="text" id="subject" name="subject" placeholder="Обсуждение проекта">
+              </div>
+
+              <div class="form-group">
+                <label for="message">Сообщение</label>
+                <textarea id="message" name="message" placeholder="Расскажите о вашем проекте..."></textarea>
+              </div>
+
+              <button type="submit" class="form-btn">Отправить сообщение</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__wrap">
+      <p class="footer__copy">© 2026 Портфолио. Все права защищены.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
