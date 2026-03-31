@@ -1,7 +1,60 @@
 document.addEventListener("DOMContentLoaded", () => {
+  initRevealAnimation();
   initFaq();
   initContactForm();
 });
+
+function initRevealAnimation() {
+  const elements = document.querySelectorAll(`
+    .hero__content,
+    .section-title,
+    .section-line,
+    .card,
+    .featured-card,
+    .review-card,
+    .cta__content,
+    .footer__top,
+    .footer__bottom,
+    .contact-item,
+    .work-card,
+    .form-card,
+    .faq-card,
+    .stat-card,
+    .skill-card,
+    .experience-card,
+    .about-story__card,
+    .about-story__visual,
+    .about-story__content,
+    .project-card,
+    .gallery-item,
+    .details-card,
+    .features-card
+  `);
+
+  if (!elements.length) return;
+
+  elements.forEach((el, index) => {
+    el.classList.add("reveal");
+    el.style.transitionDelay = `${index * 0.03}s`;
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.12,
+      rootMargin: "0px 0px -40px 0px"
+    }
+  );
+
+  elements.forEach((el) => observer.observe(el));
+}
 
 function initFaq() {
   const faqCards = document.querySelectorAll(".faq-card");
@@ -26,6 +79,7 @@ function initFaq() {
           setTimeout(() => {
             entry.target.classList.add("show");
           }, index * 120);
+          observer.unobserve(entry.target);
         }
       });
     },
@@ -56,15 +110,17 @@ function initContactForm() {
   const CHAT_ID = "823695160";
 
   [nameInput, emailInput, subjectInput, messageInput].forEach((input) => {
-  if (!input) return;
+    if (!input) return;
 
-  let error = input.parentElement.querySelector(".form-error");
-  if (!error) {
-    error = document.createElement("div");
-    error.className = "form-error";
-    input.parentElement.appendChild(error);
-  }
-});
+    let error = input.parentElement.querySelector(".form-error");
+    if (!error) {
+      error = document.createElement("div");
+      error.className = "form-error";
+      input.parentElement.appendChild(error);
+    }
+
+    input.addEventListener("input", () => clearError(input));
+  });
 
   popupClose?.addEventListener("click", closePopup);
   popupBtn?.addEventListener("click", closePopup);
@@ -135,7 +191,7 @@ function initContactForm() {
         form.reset();
         openPopup("Спасибо!", "Ваше сообщение успешно отправлено в Telegram.");
       } else {
-        openPopup("Ошибка", "Telegram вернул ошибку. Проверь токен или chat_id.");
+        openPopup("Ошибка", result.description || "Ошибка Telegram");
         console.error(result);
       }
     } catch (error) {
@@ -160,12 +216,14 @@ function initContactForm() {
   }
 
   function openPopup(title, text) {
+    if (!popup) return;
     popupTitle.textContent = title;
     popupText.textContent = text;
     popup.classList.add("active");
   }
 
   function closePopup() {
+    if (!popup) return;
     popup.classList.remove("active");
   }
 }
