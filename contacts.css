@@ -228,13 +228,16 @@ textarea {
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 10px;
 }
 
 .form-group {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
+  margin-bottom: 0;
+  padding-bottom: 20px;
 }
 
 .form-group label {
@@ -255,11 +258,6 @@ textarea {
   transition: 0.3s;
 }
 
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: #888;
-}
-
 .form-group input:focus,
 .form-group textarea:focus {
   border-color: #1f5eff;
@@ -269,6 +267,21 @@ textarea {
 .form-group textarea {
   min-height: 150px;
   resize: vertical;
+}
+
+.form-error {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #e53935;
+  height: 14px;
+}
+
+.input-error {
+  border-color: #e53935 !important;
+  background: #fff5f5 !important;
 }
 
 .form-btn {
@@ -287,6 +300,11 @@ textarea {
 
 .form-btn:hover {
   transform: translateY(-2px);
+}
+
+.form-btn.is-loading {
+  opacity: 0.75;
+  pointer-events: none;
 }
 
 /* Footer */
@@ -381,6 +399,87 @@ textarea {
   line-height: 1.6;
   color: #666;
 }
+
+
+.popup {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+}
+
+.popup.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(17, 17, 17, 0.45);
+}
+
+.popup__content {
+  position: relative;
+  width: calc(100% - 32px);
+  max-width: 420px;
+  margin: 110px auto 0;
+  background: #fff;
+  border-radius: 22px;
+  padding: 30px 24px 24px;
+  box-shadow: 0 20px 50px rgba(16, 24, 40, 0.18);
+  text-align: center;
+  transform: translateY(18px);
+  transition: 0.3s;
+}
+
+.popup.active .popup__content {
+  transform: translateY(0);
+}
+
+.popup__close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  color: #555;
+}
+
+.popup__title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.popup__text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.popup__btn {
+  min-height: 46px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 12px;
+  background: #1f5eff;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 
 @media (max-width: 992px) {
   .footer__top {
@@ -600,6 +699,97 @@ textarea {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.form-error {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #e53935;
+  min-height: 16px;
+}
+
+.input-error {
+  border-color: #e53935 !important;
+  background: #fff5f5 !important;
+}
+
+.popup {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+}
+
+.popup.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(17, 17, 17, 0.45);
+}
+
+.popup__content {
+  position: relative;
+  width: calc(100% - 32px);
+  max-width: 420px;
+  margin: 110px auto 0;
+  background: #fff;
+  border-radius: 22px;
+  padding: 30px 24px 24px;
+  box-shadow: 0 20px 50px rgba(16, 24, 40, 0.18);
+  text-align: center;
+  transform: translateY(18px);
+  transition: 0.3s;
+}
+
+.popup.active .popup__content {
+  transform: translateY(0);
+}
+
+.popup__close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  color: #555;
+}
+
+.popup__title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.popup__text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.popup__btn {
+  min-height: 46px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 12px;
+  background: #1f5eff;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
