@@ -110,7 +110,7 @@ img {
   font-family: "Montserrat", sans-serif;
   font-size: 54px;
   font-weight: 800;
-  color: #1f5eff;
+  color: #000000;
   margin-bottom: 16px;
 }
 
@@ -301,21 +301,144 @@ img {
 /* Footer */
 .footer {
   background: #ffffff;
-  padding: 30px 0;
   border-top: 1px solid #ececf2;
+  margin-top: 90px;
 }
 
-.footer__wrap {
+.footer .container {
+  padding-top: 48px;
+  padding-bottom: 24px;
+}
+
+.footer__top {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 28px;
+}
+
+.footer__brand {
+  max-width: 360px;
+}
+
+.footer__logo {
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 16px;
+}
+
+.footer__description {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #666;
+}
+
+.footer__title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 16px;
+}
+
+.footer__nav-block,
+.footer__contacts {
+  min-width: 180px;
+}
+
+.footer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer__nav a,
+.footer__contact-link {
+  font-size: 15px;
+  color: #555;
+  transition: 0.3s;
+}
+
+.footer__nav a:hover,
+.footer__contact-link:hover {
+  color: #1f5eff;
+}
+
+.footer__contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer__contact-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #777;
+}
+
+.footer__bottom {
+  border-top: 1px solid #ececf2;
+  padding-top: 20px;
+  text-align: center;
 }
 
 .footer__copy {
   font-size: 14px;
   line-height: 1.6;
   color: #666;
-  text-align: center;
+}
+
+@media (max-width: 992px) {
+  .footer__top {
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .footer__brand {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    margin-top: 70px;
+  }
+
+  .footer .container {
+    padding-top: 36px;
+  }
+
+  .footer__top {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .footer__logo {
+    font-size: 24px;
+  }
+
+  .footer__title {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer .container {
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+
+  .footer__description,
+  .footer__nav a,
+  .footer__contact-link,
+  .footer__contact-text,
+  .footer__copy {
+    font-size: 14px;
+  }
 }
 
 /* Responsive */

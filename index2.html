@@ -28,50 +28,60 @@
   </header>
 
   <main>
-    <section class="about-hero">
-      <div class="container">
-        <h1 class="page-title">О себе</h1>
-        <div class="title-line"></div>
+    <section class="about-hero about-story">
+  <div class="container">
+    <div class="about-story__layout">
+      <div class="about-story__visual reveal">
+        <div class="about-story__photo-wrap">
+          <img src="IMG/Myphoto.jpg" alt="Фото разработчика" class="about-story__photo">
+        </div>
 
-        <div class="about-grid">
-          <div class="about-text">
-            <p>
-              Я веб-разработчик с опытом создания современных и
-              функциональных веб-приложений. Моя специализация —
-              разработка пользовательских интерфейсов и создание
-              адаптивных сайтов.
-            </p>
+        <div class="about-story__shape about-story__shape--circle"></div>
+        <div class="about-story__shape about-story__shape--square"></div>
+      </div>
 
-            <p>
-              Использую современные технологии и инструменты для
-              создания качественных продуктов. Постоянно обучаюсь
-              и слежу за новыми трендами в веб-разработке.
-            </p>
+      <div class="about-story__content">
+        <h1 class="about-story__title reveal">
+          ПРИВЕТ! <span>Я РАЗРАБОТЧИК</span>
+        </h1>
 
-            <p>
-              Работаю с клиентами по всему миру, помогая
-              реализовывать их идеи в цифровом пространстве.
-            </p>
+        <div class="about-story__text reveal">
+          <p>
+            Я веб-разработчик с опытом создания современных и
+            функциональных веб-приложений. Моя специализация —
+            разработка пользовательских интерфейсов и создание
+            адаптивных сайтов.
+          </p>
+
+          <p>
+            Использую современные технологии и инструменты для
+            создания качественных продуктов. Постоянно обучаюсь
+            и слежу за новыми трендами в веб-разработке.
+          </p>
+
+          <p>
+            Работаю с клиентами по всему миру, помогая
+            реализовывать их идеи в цифровом пространстве.
+          </p>
+        </div>
+
+        <div class="about-story__experience">
+          <div class="about-story__card reveal">
+            <h2>Frontend разработчик</h2>
+            <span>2026 - настоящее время</span>
+            <p>Разработка веб-приложений на React и TypeScript</p>
           </div>
 
-          <div class="experience-card">
-            <h2 class="experience-card__title">Мой опыт</h2>
-
-            <div class="experience-item">
-              <h3>Frontend разработчик</h3>
-              <span>2021 - настоящее время</span>
-              <p>Разработка веб-приложений на React и TypeScript</p>
-            </div>
-
-            <div class="experience-item">
-              <h3>Веб-разработчик</h3>
-              <span>2019 - 2021</span>
-              <p>Создание сайтов и лендингов</p>
-            </div>
+          <div class="about-story__card reveal">
+            <h2>Веб-разработчик</h2>
+            <span>2019 - 2021</span>
+            <p>Создание сайтов и лендингов</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <section class="stats">
       <div class="container">
@@ -185,10 +195,98 @@
   </main>
 
   <footer class="footer">
-    <div class="container footer__wrap">
-      <p class="footer__copy">© 2026 Портфолио. Все права защищены.</p>
-    </div>
-  </footer>
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">Портфолио</a>
+        <p class="footer__description">
+          Разработка современных сайтов, интерфейсов и адаптивных веб-страниц
+          с акцентом на удобство, стиль и качество.
+        </p>
+      </div>
 
+      <div class="footer__nav-block">
+        <h3 class="footer__title">Навигация</h3>
+        <nav class="footer__nav">
+          <a href="index.html">Главная</a>
+          <a href="index2.html">О себе</a>
+          <a href="index4.html">Портфолио</a>
+          <a href="index3.html">Контакты</a>
+        </nav>
+      </div>
+
+      <div class="footer__contacts">
+        <h3 class="footer__title">Контакты</h3>
+        <a href="tel:+78121112233" class="footer__contact-link">8 (812) 111-22-33</a>
+        <a href="mailto:hello@example.com" class="footer__contact-link">hello@example.com</a>
+        <p class="footer__contact-text">Открыт для сотрудничества и новых проектов</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const revealItems = document.querySelectorAll(".reveal");
+  const shapes = document.querySelectorAll(".about-story__shape");
+  const cards = document.querySelectorAll(".about-story__card");
+  const photoWrap = document.querySelector(".about-story__photo-wrap");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealItems.forEach((item) => observer.observe(item));
+
+  let angle = 0;
+  function animateShapes() {
+    angle += 0.01;
+
+    shapes.forEach((shape, index) => {
+      const offsetX = Math.sin(angle + index) * 6;
+      const offsetY = Math.cos(angle + index) * 6;
+      shape.style.transform = `translate(${offsetX}px, ${offsetY}px) ${index === 1 ? "rotate(12deg)" : ""}`;
+    });
+
+    requestAnimationFrame(animateShapes);
+  }
+
+  animateShapes();
+
+  cards.forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      if (window.innerWidth <= 768) return;
+
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / 25;
+      const rotateY = (centerX - x) / 25;
+
+      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)";
+    });
+  });
+
+  if (photoWrap) {
+    window.addEventListener("mousemove", (e) => {
+      if (window.innerWidth <= 992) return;
+
+      const x = (e.clientX / window.innerWidth - 0.5) * 10;
+      const y = (e.clientY / window.innerHeight - 0.5) * 10;
+
+      photoWrap.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px)`;
+    });
+  }
+});
+</script>
 </body>
 </html>
